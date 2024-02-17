@@ -22,7 +22,7 @@ const {
 //  router.delete('/users/:id', deleteUser);
 
   router
-  .route('/users/:id')
+  .route('/:id')
   .get(getUserById)
   .put(updateUser)
   .delete(deleteUser);
