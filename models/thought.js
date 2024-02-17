@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
-const reactionSchema = require('./reaction')
+const reactionSchema = require('./reaction');
+const { format } = require("date-fns");
 
 
 // Schema to create Student model
@@ -13,7 +14,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
+      get: (createdAtVal) => format(createdAtVal, "yyyy-MM-dd HH:mm:ss"),
     },
     username_thought: {
       type: String,

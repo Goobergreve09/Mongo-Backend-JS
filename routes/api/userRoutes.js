@@ -11,19 +11,33 @@ const {
   } = require('../../controllers/userController');
 
   
-router.get('/users', getAllUsers);
+// router.get('/users', getAllUsers);
+// router.post('/users', createUser);
 
-router.get('/users/:id', getUserById);
+  router.route("/").get(getAllUsers).post(createUser);
 
-router.post('/users', createUser);
 
-router.put('/users/:id', updateUser);
+//  router.get('/users/:id', getUserById);
+//  router.put('/users/:id', updateUser);
+//  router.delete('/users/:id', deleteUser);
 
-router.delete('/users/:id', deleteUser);
+  router
+  .route('/users/:id')
+  .get(getUserById)
+  .put(updateUser)
+  .delete(deleteUser);
 
-router.post('/users/:userId/friends/:friendId', addFriend);
 
-router.delete('/users/:userId/friends/:friendId', removeFriend);
+
+//  router.post('/users/:userId/friends/:friendId', addFriend);
+//  router.delete('/users/:userId/friends/:friendId', removeFriend);
+
+  router
+  .route('/users/:userId/friends/:friendId')
+  .post(addFriend)
+  .delete(removeFriend);
+
+
 
 module.exports = router;
   

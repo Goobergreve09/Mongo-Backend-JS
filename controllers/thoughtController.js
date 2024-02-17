@@ -5,8 +5,11 @@ const thoughtController = {
     getAllThoughts(req, res) {
         Thought.find()
           .then(thoughts => res.json(thoughts))
-          .catch(err => res.status(500).json(err));
-      },
+          .catch(err => {
+              console.error("Error in getAllThoughts:", err);
+              res.status(500).json(err);
+          });
+    },
 
       getThoughtById(req, res) {
         const { thoughtId } = req.params;
