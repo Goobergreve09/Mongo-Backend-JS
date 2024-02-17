@@ -33,9 +33,12 @@ const {
 //  router.delete('/users/:userId/friends/:friendId', removeFriend);
 
   router
-  .route('/users/:userId/friends/:friendId')
-  .post(addFriend)
+  .route('/:id/friends/:friendId')
   .delete(removeFriend);
+
+  router
+  .route('/:id/friends')
+  .post(addFriend);
 
 
 

@@ -75,26 +75,32 @@ const userController = {
   },
 
   // Add friend to user's friend list
-  addFriend({ params, body }, res) {
+  addFriend(req, res) {
+    const userId = req.params.id; // Correctly extract userId
+    const { friendId } = req.body; // Extract friendId from request body
+    console.log(userId);
+    console.log(friendId)
+
     User.findOneAndUpdate(
-      { _id: params.userId },
-      { $addToSet: { friends: params.friendId } },
+      { _id: userId },
+      { $addToSet: { friends: friendId } },
       { new: true }
     )
       .then(userData => {
         if (!userData) {
-          res.status(404).json({ message: 'No user found with this id!' });
-          return;
+          return res.status(404).json({ message: 'No user found with this id!' });
         }
-        res.json(userData);
+        return res.json(userData);
       })
       .catch(err => res.status(400).json(err));
-  },
+},
+
+
 
   // Remove friend from user's friend list
   removeFriend({ params }, res) {
     User.findOneAndUpdate(
-      { _id: params.userId },
+      { _id: params.id },
       { $pull: { friends: params.friendId } },
       { new: true }
     )
