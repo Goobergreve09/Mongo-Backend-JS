@@ -1,5 +1,4 @@
-const { Schema, model } = require('mongoose');
-
+const { Schema, model } = require("mongoose");
 
 const reactionSchema = new Schema(
   {
@@ -19,7 +18,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: createdAtVal => dateFormat(createdAtVal)
+      get: (createdAtVal) => dateFormat(createdAtVal),
     },
   },
   {
@@ -38,10 +37,10 @@ const thoughtSchema = new Schema(
       max_length: 280,
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
-      },
+      type: Date,
+      default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
+    },
     username_thought: {
       type: String,
       required: true,
@@ -56,6 +55,6 @@ const thoughtSchema = new Schema(
   }
 );
 
-const Thought = model('Thought', thoughtSchema);
+const Thought = model("Thought", thoughtSchema);
 
 module.exports = Thought;
