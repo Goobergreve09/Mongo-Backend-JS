@@ -1,5 +1,5 @@
 
-# Social Media API with noSQLand Insomnia
+# Social Media API with NoSQL & Insomnia
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
